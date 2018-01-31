@@ -1,7 +1,6 @@
 
 var save = function(newItem){
   var countryInfo = JSON.parse(localStorage.getItem('country-info')) || [];
-  // console.log(countryInfo);
   countryInfo.push(newItem);
   localStorage.setItem('country-info', JSON.stringify(countryInfo));
 }
@@ -34,9 +33,7 @@ var requestComplete = function(){
 }
 
 var selectedCountry = function(countries){
-
   var selectedResult = document.getElementById('country-info');
-
   var viewCountriesDropDown = document.getElementById('country-list');
 
   viewCountriesDropDown.addEventListener('change', function () {
@@ -50,12 +47,12 @@ var selectedCountry = function(countries){
     //
     // console.log(flagImage.src);
     // flagResult.appendChild(flagImage);
-    selectedResult.innerHTML = "Country: " + countries[viewCountriesDropDown.value].name + "<br>" +
+    selectedResult.innerText = "Country: " + countries[viewCountriesDropDown.value].name + "<br>" +
     "Capital: " + countries[viewCountriesDropDown.value].capital + "<br>" +
     "Population: " + countries[viewCountriesDropDown.value].population + "<br>" +
     "Flag: " + countries[viewCountriesDropDown.value].flag;
   })
-
+ save(selectedResult)
 }
 
 var app = function(){
